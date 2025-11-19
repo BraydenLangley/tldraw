@@ -120,14 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function RootMeta() {
 	return (
 		<Helmet>
-			<title>tldraw examples</title>
+			<title>BitCanvas whiteboard playground</title>
 			<meta
 				name="keywords"
-				content="tldraw, examples, whiteboard, react, collaborative whiteboard, online drawing, team collboration, react, library"
+				content="BitCanvas, tldraw, examples, whiteboard, react, collaborative whiteboard, online drawing, team collaboration, react, library"
 			/>
 			<meta
 				name="description"
-				content="Examples for using tldraw - a library for building infinite canvases with React. "
+				content="Discover BitCanvas - a beautifully branded tldraw experience with curated examples for building infinite canvases in React."
 			/>
 		</Helmet>
 	)

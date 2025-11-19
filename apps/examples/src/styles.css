@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
 
 :root {
-	--background: white;
-	--text: hsl(0, 0%, 11%);
-	--gray-light: #f5f5f5;
-	--gray-dark: #e8e8e8;
-	--black-transparent-lighter: rgba(0, 0, 0, 0.07);
-	--black-transparent-light: rgba(0, 0, 0, 0.3);
-	--black-transparent-dark: rgba(0, 0, 0, 0.5);
-	--black-transparent-darker: rgba(0, 0, 0, 0.7);
-	--focus: hsl(214, 84%, 56%);
-	--whiteboard: hsl(210, 20%, 98%);
-	color-scheme: light;
+--background: #0b1021;
+--text: #e6e8f2;
+--gray-light: #12172a;
+--gray-dark: #1c2240;
+--black-transparent-lighter: rgba(255, 255, 255, 0.07);
+--black-transparent-light: rgba(255, 255, 255, 0.2);
+--black-transparent-dark: rgba(0, 0, 0, 0.5);
+--black-transparent-darker: rgba(0, 0, 0, 0.7);
+--focus: #7c3aed;
+--brand-cyan: #38bdf8;
+--brand-magenta: #a855f7;
+--whiteboard: #0f172a;
+color-scheme: dark;
 }
 
 html,
@@ -57,10 +59,13 @@ html,
 }
 
 .example__content {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
+position: relative;
+height: 100%;
+width: 100%;
+overflow: auto;
+background: radial-gradient(circle at 10% 30%, rgba(168, 85, 247, 0.08), transparent 40%),
+radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.1), transparent 45%),
+linear-gradient(180deg, #0f172a 0%, #0b1021 100%);
 }
 
 @media screen and (max-width: 500px) {
@@ -77,15 +82,18 @@ html,
 /* --------------------- Sidebar -------------------- */
 
 .example__sidebar {
-	width: 256px;
-	min-width: 256px;
-	display: grid;
-	grid-template-rows: auto 48px 48px 1fr auto;
-	border-right: 1px solid var(--black-transparent-light);
-	overflow: hidden;
-	font-size: 14px;
-	font-weight: 500;
-	max-height: 100%;
+width: 256px;
+min-width: 256px;
+display: grid;
+grid-template-rows: auto 48px 48px 1fr auto;
+border-right: 1px solid var(--black-transparent-light);
+background: radial-gradient(circle at 20% 20%, rgba(120, 57, 255, 0.1), transparent 55%),
+radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.08), transparent 45%),
+var(--gray-light);
+overflow: hidden;
+font-size: 14px;
+font-weight: 500;
+max-height: 100%;
 }
 
 .example__sidebar a {
@@ -94,11 +102,13 @@ html,
 }
 
 .example__sidebar__filter {
-	margin: 8px;
-	padding: 8px;
-	border-radius: 6px;
-	border: 1px solid var(--gray-dark);
-	font-size: 14px;
+margin: 8px;
+padding: 8px;
+border-radius: 6px;
+border: 1px solid var(--black-transparent-light);
+background: rgba(255, 255, 255, 0.04);
+font-size: 14px;
+color: var(--text);
 }
 
 /* Header */
@@ -112,19 +122,43 @@ html,
 }
 
 .example__sidebar__header__logo {
-	all: unset;
-	cursor: pointer;
-	flex: none;
-	font-size: 1.15rem;
-	display: flex;
-	align-items: center;
-	justify-content: start;
-	overflow: hidden;
-	padding: 0px;
+all: unset;
+cursor: pointer;
+flex: none;
+font-size: 1.15rem;
+display: flex;
+align-items: center;
+justify-content: start;
+overflow: hidden;
+padding: 0px;
 }
-.examples__tldraw__logo {
-	height: 18px;
-	width: auto;
+
+.examples__brand {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+padding: 8px 12px;
+border-radius: 999px;
+background: linear-gradient(120deg, var(--brand-magenta), var(--brand-cyan));
+color: #0a0c18;
+font-weight: 800;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+box-shadow: 0 10px 40px rgba(56, 189, 248, 0.2);
+border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.examples__brand-mark {
+background: rgba(10, 12, 24, 0.1);
+padding: 4px 10px;
+border-radius: 999px;
+backdrop-filter: blur(6px);
+border: 1px solid rgba(10, 12, 24, 0.08);
+}
+
+.examples__brand-canvas {
+color: #0a0c18;
+opacity: 0.9;
 }
 
 /* Categories */
