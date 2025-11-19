@@ -57,7 +57,7 @@ export function ExamplePage({
 						<div className="example__sidebar__header__socials">
 							<a
 								target="_blank"
-								href="https://twitter.com/tldraw"
+								href="https://twitter.com/bitcanvas"
 								rel="noopener noreferrer"
 								title="twitter"
 								className="hoverable"
@@ -66,7 +66,7 @@ export function ExamplePage({
 							</a>
 							<a
 								target="_blank"
-								href="https://github.com/tldraw/tldraw"
+								href="https://github.com/bitcanvashq"
 								rel="noopener noreferrer"
 								title="github"
 								className="hoverable"
@@ -75,7 +75,7 @@ export function ExamplePage({
 							</a>
 							<a
 								target="_blank"
-								href="https://discord.tldraw.com/?utm_source=examples&utm_medium=organic&utm_campaign=examples"
+								href="https://discord.gg/bitcanvas"
 								rel="noopener noreferrer"
 								title="discord"
 								className="hoverable"
@@ -86,7 +86,7 @@ export function ExamplePage({
 					</div>
 					<div className="example__sidebar__header-links">
 						<a className="example__sidebar__header-link" href="/develop">
-							Develop
+							Experience BitCanvas
 						</a>
 					</div>
 					<input
@@ -118,7 +118,6 @@ export function ExamplePage({
 										})
 										.map((sidebarExample) => (
 											<ExampleSidebarListItem
-												key={sidebarExample.path}
 												example={sidebarExample}
 												isActive={sidebarExample.path === example.path}
 											/>
@@ -130,19 +129,19 @@ export function ExamplePage({
 					<div className="example__sidebar__footer-links">
 						<a
 							className="example__sidebar__footer-link example__sidebar__footer-link--grey"
+							href="https://github.com/bitcanvashq/bitcanvas/issues/new"
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://github.com/tldraw/tldraw/issues/new?assignees=&labels=Example%20Request&projects=&template=example_request.yml&title=%5BExample Request%5D%3A+"
 						>
 							Request an example
 						</a>
 						<a
 							className="example__sidebar__footer-link example__sidebar__footer-link--grey"
+							href="https://bitcanvas.app/docs"
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://tldraw.dev/?utm_source=examples&utm_medium=organic&utm_campaign=examples"
 						>
-							Visit the docs
+							Visit the BitCanvas docs
 						</a>
 					</div>
 				</nav>
@@ -304,5 +303,10 @@ function ExternalLinkIcon() {
 }
 
 function TldrawLogo() {
-	return <img className="examples__tldraw__logo" src="tldraw_dev_light.png" alt="tldraw logo" />
+	return (
+		<div className="examples__brand">
+			<span className="examples__brand-mark">Bit</span>
+			<span className="examples__brand-canvas">Canvas</span>
+		</div>
+	)
 }

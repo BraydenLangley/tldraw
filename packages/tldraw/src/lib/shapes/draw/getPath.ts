@@ -10,27 +10,33 @@ import {
 } from '@tldraw/editor'
 import { StrokeOptions } from '../shared/freehand/types'
 
-const PEN_EASING = (t: number) => t * 0.65 + SIN((t * PI) / 2) * 0.35
+const PEN_EASING = (t: number) => t * 0.55 + SIN((t * PI) / 2) * 0.45
+
+const procreateTaper = (strokeWidth: number) => Math.min(18, strokeWidth * 1.8 + 6)
 
 const simulatePressureSettings = (strokeWidth: number): StrokeOptions => {
 	return {
-		size: strokeWidth,
-		thinning: 0.5,
-		streamline: modulate(strokeWidth, [9, 16], [0.64, 0.74], true), // 0.62 + ((1 + strokeWidth) / 8) * 0.06,
-		smoothing: 0.62,
-		easing: EASINGS.easeOutSine,
+		size: strokeWidth * 1.2,
+		thinning: 0.72,
+		streamline: modulate(strokeWidth, [9, 16], [0.68, 0.82], true),
+		smoothing: 0.7,
+		easing: (pressure) => EASINGS.easeOutCubic(Math.pow(pressure, 0.8)),
 		simulatePressure: true,
+		start: { taper: procreateTaper(strokeWidth), easing: EASINGS.easeOutSine },
+		end: { taper: procreateTaper(strokeWidth) * 1.15, easing: EASINGS.easeInOutSine },
 	}
 }
 
 const realPressureSettings = (strokeWidth: number): StrokeOptions => {
 	return {
-		size: 1 + strokeWidth * 1.2,
-		thinning: 0.62,
-		streamline: 0.62,
-		smoothing: 0.62,
+		size: 1 + strokeWidth * 1.35,
+		thinning: 0.7,
+		streamline: 0.7,
+		smoothing: 0.7,
 		simulatePressure: false,
 		easing: PEN_EASING,
+		start: { taper: procreateTaper(strokeWidth), easing: EASINGS.easeOutSine },
+		end: { taper: procreateTaper(strokeWidth) * 1.15, easing: EASINGS.easeInOutSine },
 	}
 }
 
@@ -39,7 +45,7 @@ const solidSettings = (strokeWidth: number): StrokeOptions => {
 		size: strokeWidth,
 		thinning: 0,
 		streamline: modulate(strokeWidth, [9, 16], [0.64, 0.74], true), // 0.62 + ((1 + strokeWidth) / 8) * 0.06,
-		smoothing: 0.62,
+		smoothing: 0.64,
 		simulatePressure: false,
 		easing: EASINGS.linear,
 	}
@@ -49,8 +55,8 @@ const solidRealPressureSettings = (strokeWidth: number): StrokeOptions => {
 	return {
 		size: strokeWidth,
 		thinning: 0,
-		streamline: 0.62,
-		smoothing: 0.62,
+		streamline: 0.64,
+		smoothing: 0.64,
 		simulatePressure: false,
 		easing: EASINGS.linear,
 	}
@@ -66,10 +72,12 @@ export function getHighlightFreehandSettings({
 	return {
 		size: 1 + strokeWidth,
 		thinning: 0,
-		streamline: 0.5,
-		smoothing: 0.5,
+		streamline: 0.62,
+		smoothing: 0.62,
 		simulatePressure: false,
 		easing: EASINGS.easeOutSine,
+		start: { taper: procreateTaper(strokeWidth) / 2 },
+		end: { taper: procreateTaper(strokeWidth) / 1.5, easing: EASINGS.easeOutSine },
 		last: showAsComplete,
 	}
 }
